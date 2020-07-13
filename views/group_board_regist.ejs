@@ -1,0 +1,37 @@
+<!--그룹게시판등록-->
+<script>
+  var back=function(frm){        
+   var url = document.location.href;
+   var cut=url.split('/');
+   
+   frm.action=`/employer/group/board/${cut[7]}`;
+   frm.method="get"
+   frm.submit();
+   
+    return true;
+      
+  }
+</script>
+<div>
+  <!--이력서등록화면-->
+
+    <form action=<%=`http://localhost:3000/employer/group/board/regist/${sess.info.group_num}`%> method="post" enctype="application/json"
+      style="height:100%">
+    <div style="margin-top:100px; height:500px">
+      <div style="display: block;">
+        <div  style="width:30%;display:block;">제목</div>
+        <div style="width:50%;display:block"><input name="name" style="width:85%" type="text"></div>
+      </div>
+      <div>작성자</div>
+      <div><%=sess.info.employer_id%></div>
+      <div>
+        <div >내용</div>
+        <div>
+          <input style="width:100%" name="content"
+             type="text">
+        </div>
+      </div>
+      <button type="submit">등록</button>
+      <input type="button" onclick="return back(this.form)" value="목록으로">
+    </form>
+</div>

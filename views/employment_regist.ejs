@@ -1,0 +1,65 @@
+<!--채용등록화면-->
+<div class="w-25 m-auto">
+    <form class="form-signin" action="regist" method="POST">
+        <div class="text-center mb-4">
+            <br /><br /><br /> <br /><br /><br /> <br />
+            <h1 class="h3 mb-3 font-weight-normal">Join</h1>
+
+        </div>
+
+        <div class="form-label-group">
+            <label>채용명</label>
+            <input type="text" class="form-control" placeholder="id" required="" name="employment_board_name"
+                autofocus="">
+        </div>
+
+        <div class="form-label-group">
+            <label>업체명</label>
+            <input type="text" class="form-control" placeholder="Password" required=""
+                name="employment_board_companyname">
+        </div>
+
+        <div class="form-label-group">
+            <label>업종</label>
+            <input type="text" class="form-control" placeholder="Name" required="" name="employment_board_industry">
+        </div>
+
+        <div class="form-label-group">
+            <label>기간</label><br>
+            <input type="text" class="form-control" placeholder="Name" name="employment_board_period">
+        </div>
+
+        <div class="form-label-group">
+            <label>요일</label><br>
+            <input type="text" name="employment_board_day" class="form-control" placeholder="Phone">
+        </div>
+
+        <div class="form-label-group">
+            <label>시간</label><br>
+            <input type="text" name="employment_board_time" class="form-control" placeholder="Address">
+        </div>
+
+        <div class="form-label-group">
+            <label>급여</label><br>
+            <input type="text" name="employment_board_salary" class="form-control" placeholder="Address">
+        </div>
+
+        <div class="form-label-group">
+            <label>고용형태</label><br>
+            <input type="text" name="employment_board_type" class="form-control" placeholder="Address">
+        </div>
+
+        <div class="form-label-group">
+            <label>모집인원</label><br>
+            <input type="text" name="employment_board_personnel" class="form-control" placeholder="Address">
+        </div>
+
+        <div class="form-label-group">
+            <label>주소</label><br>
+            <input type="text" name="employment_board_address" class="form-control" placeholder="Address">
+        </div>
+        <input type="hidden" name="employer_id" value="<%=sess.info.employer_id%>">
+        <button class="btn btn-outline-primary btn-block" type="submit">등록</button>
+
+    </form>
+</div>

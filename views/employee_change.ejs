@@ -1,0 +1,46 @@
+<!--구직자개인정보수정화면-->
+<div class="w-25 m-auto">
+    <form class="form-signin" action="change" method="POST">
+        <div class="text-center mb-4">
+            <br /><br /><br /> <br /><br /><br /> <br />
+            <h1 class="h3 mb-3 font-weight-normal">개인정보수정</h1>
+
+        </div>
+
+        <div class="form-label-group">
+            <label>employee_id</label><br>
+            <%=data[0].employee_id%>
+            <input type="hidden" name="employee_id" value="<%=data[0].employee_id%>">
+        </div>
+
+        <div class="form-label-group">
+            <label>Password</label>
+            <input type="text" class="form-control" placeholder="Password" required=""
+                name="employee_pw" value="<%=data[0].employee_pw%>">
+        </div>
+
+        <div class="form-label-group">
+            <label>Name</label><br>
+            <%=data[0].employee_name%>
+        </div>
+
+        <div class="form-label-group">
+            <label>gender</label><br>
+            <%=data[0].employee_gender%>
+        </div>
+        
+        <div class="form-label-group">
+                <label>phone</label><br>
+                <input type="text" name="employee_phone" class="form-control" placeholder="Phone" value="<%=data[0].employee_phone%>">
+        </div>
+
+        <div class="form-label-group">
+                <label>address</label><br>
+                <input type="text" name="employee_address" class="form-control" placeholder="Address" value="<%=data[0].employee_address%>">
+        </div>
+
+        <input type="hidden" name="check" value="1">
+        <button class="btn btn-outline-primary btn-block" type="submit">수정</button>
+
+    </form>
+</div>

@@ -1,0 +1,147 @@
+<nav
+	class="navbar navbar-expand-lg navbar-light w-100"
+	style="background: rgba(51,51,51);padding:10px 15%;position:relative"
+>
+	<a class="navbar-brand" href="/" style="color:white;font-family: sans-serif;"
+		>Home</a
+	>
+	<button
+		class="navbar-toggler"
+		type="button"
+		data-toggle="collapse"
+		data-target="#navbarSupportedContent"
+		aria-controls="navbarSupportedContent"
+		aria-expanded="false"
+		aria-label="Toggle navigation"
+	>
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse text-" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active">
+				<a class="nav-link" href="#"><span class="sr-only">(current)</span></a>
+			</li>
+			<% if(sess.info){ %>
+			<li class="nav-item">
+				<a
+					style="color:white;font-family: sans-serif;"
+					class="nav-link"
+					href="/users/logout"
+					>Logout</a
+				>
+			</li>
+			<%if(sess.info.check==1){%>
+			<li class="nav-item">
+				<a
+					style="color:white;font-family: sans-serif;"
+					class="nav-link"
+					href="../employee/change?employee_id=<%=sess.info.employee_id%>"
+					>개인정보수정</a
+				>
+			</li>
+			<li class="nav-item">
+				<a
+					style="color:white;font-family: sans-serif;"
+					class="nav-link"
+					href="#"
+					>이력서등록</a
+				>
+			</li>
+			<li class="nav-item">
+				<a
+					style="color:white;font-family: sans-serif;"
+					class="nav-link"
+					href="#"
+					>채용자목록화면</a
+				>
+			</li>
+			<%}else{%> <%if(sess.info.check==2){%>
+
+			<li class="nav-item">
+				<a
+					style="color:white;font-family: sans-serif;"
+					class="nav-link"
+					href="../employer/change?employer_id=<%=sess.info.employer_id%>"
+					>개인정보수정</a
+				>
+			</li>
+			<li class="nav-item">
+				<a
+					style="color:white;font-family: sans-serif;"
+					class="nav-link"
+					href="#"
+					>구직자목록화면</a
+				>
+			</li>
+			<li class="nav-item">
+				<a
+					style="color:white;font-family: sans-serif;"
+					class="nav-link"
+					href="#"
+					>구직신청조회화면</a
+				>
+			</li>
+			<li class="nav-item">
+				<a
+					style="color:white;font-family: sans-serif;"
+					class="nav-link"
+					href="/employer/regist"
+					>채용등록화면</a
+				>
+			</li>
+			<% if( sess.info.group_num=="0"){%>
+			<li class="nav-item">
+				<a
+					style="color:white;font-family: sans-serif;"
+					class="nav-link"
+					href="/employer/group/list"
+					>그룹 보기</a
+				>
+			</li>
+			<%}else{%>
+				<li class="nav-item">
+						<a
+							style="color:white;font-family: sans-serif;"
+							class="nav-link"
+							href=<%=`/employer/group/board/${sess.info.group_num}`%>
+							>그룹 게시판 보기</a
+						>
+					</li>
+			<%}%>
+			<li class="nav-item">
+					<a
+						style="color:white;font-family: sans-serif;"
+						class="nav-link"
+						href="/employer/group/userlist"
+						>그룹 멤버 상태 보기</a
+					>
+				</li>
+			<li class="nav-item">
+				<a
+					style="color:white;font-family: sans-serif;"
+					class="nav-link"
+					href="/employer/groupcreate"
+					>그룹생성</a
+				>
+			</li>
+			<%}%> <%}%> <%} else{%>
+			<li class="nav-item">
+				<a
+					style="color:white;font-family: sans-serif;"
+					class="nav-link"
+					href="/users/login"
+					>employee_Login</a
+				>
+			</li>
+			<li class="nav-item">
+				<a
+					style="color:white;font-family: sans-serif;"
+					class="nav-link"
+					href="/users/rlogin"
+					>employer_Login</a
+				>
+			</li>
+			<% } %>
+		</ul>
+	</div>
+</nav>

@@ -1,0 +1,59 @@
+<!--그룹게시판상세-->
+<!--그룹게시판-->
+<style>
+    table {
+      border-collapse: collapse;
+      text-align: left;
+      line-height: 1.5;
+    }
+  
+    table thead th {
+      padding: 10px;
+      font-weight: bold;
+      vertical-align: top;
+      color: #369;
+      border-bottom: 3px solid #036;
+    }
+  
+    table tbody th {
+      width: 150px;
+      padding: 10px;
+      font-weight: bold;
+      vertical-align: top;
+      border-bottom: 1px solid #ccc;
+      background: #f3f6f7;
+    }
+  
+    table td {
+      width: 350px;
+      padding: 10px;
+      vertical-align: top;
+      border-bottom: 1px solid #ccc;
+    }
+    table {
+      width: 100%;
+      text-align: center;
+    }
+  </style>
+  <div>
+    <table>
+      <tbody>
+        <tr>
+            <th>글 제목</th>
+            <td><%=data[0].group_board_name%></td>
+            <th>작성자</th>
+            <td><%=data[0].employer_id%></td>
+        </tr>
+        <tr>
+            <th>글 내용</th>
+            <td colspan="3"><%=data[0].group_board_content%></td>
+        </tr>
+      </tbody>
+    </table>
+    <%if(sess.info.employer_id==data[0].employer_id){%>
+    <a href=<%=`/employer/group/board/update/${data[0].group_board_num}`%>><button>글 수정</button></a>
+    <a href=<%=`/employer/group/board/delete/${data[0].group_board_num}`%>><button>글 삭제</button></a>
+    <%}%>
+    <a href=<%=`/employer/group/board/${data[0].group_board_num}`%>><button>목록으로</button></a>
+  </div>
+  

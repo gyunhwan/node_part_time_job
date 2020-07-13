@@ -1,0 +1,68 @@
+<!--그룹회원목록화면-->
+<div style="width:100%;align-content: center;">
+    <style>
+      table {
+        border-collapse: collapse;
+        text-align: left;
+        line-height: 1.5;
+  
+      }
+  
+      table thead th {
+        padding: 10px;
+        font-weight: bold;
+        vertical-align: top;
+        color: #369;
+        border-bottom: 3px solid #036;
+      }
+  
+      table tbody th {
+        width: 150px;
+        padding: 10px;
+        font-weight: bold;
+        vertical-align: top;
+        border-bottom: 1px solid #ccc;
+        background: #f3f6f7;
+      }
+  
+      table td {
+        width: 350px;
+        padding: 10px;
+        vertical-align: top;
+        border-bottom: 1px solid #ccc;
+      }
+    </style>
+    <%
+    var state;
+    var foo=(e)=>{
+      state=e
+    }
+    %>
+    <table style="margin:auto;width:100%;border-bottom:1">
+      <thead>
+        <tr>
+          <th>유저이름</th>
+          <th>유저 주소</th>
+          <th>유저 등급</th>
+          <th>승인/ 삭제</th>
+      </thead>
+      <tbody>
+        </tr>
+        <%for(var i=0 ; i<data.length;i++){%>
+        <tr>
+            <th><%=data[i].employer_name%></th>
+            <th><%=data[i].employer_address%></th>
+            <th><%=data[i].employer_grade_code%></th>
+            <%if(data[i].group_state!=2){%>
+            <th><a href=<%=`/employer/group/userok/${data[i].employer_id}?method=put`%>><button>승인 하기</button></a></th>
+            <th><a href=<%=`/employer/group/userok/${data[i].employer_id}?method=cancle`%> > <button>거절 하기</button>  </a></th>
+            <%}else{%>
+
+            <th colspan=2><a href=<%=`/employer/group/userok/${data[i].employer_id}?method=delete`%>><button>삭제하기</button></a></th>
+            <%}%>
+
+        </tr>
+        <%}%>
+              </tbody>
+    </table>
+  </div>

@@ -1,0 +1,33 @@
+<!--검색화면-->
+<div class="w-25 m-auto">
+        <br><br>
+        <div id="carouselExampleIndicators" class="text-center mb-4" data-ride="carousel">
+        <form action="../search" method="GET">
+        <table>
+            <tr>
+                <td>지역</td>
+                <td><input type="text" name="employment_board_address" placeholder="지역"></td>
+                <td><input type="submit" value="검색"></td>
+            </tr>
+        </table>
+        </form>
+        
+        <table border="1">
+            <tr>
+                <td>기업명</td>
+                <td>모집제목</td>
+                <td>급여</td>
+                <td>근무시간</td>
+            </tr>
+            <%for(var i=0 ; i<data.length;i++){%>
+            <tr>
+                <td><%=data[i].employment_board_name%></td>
+                <td><a href="#"><%=data[i].employment_board_companyname%></a></td>
+                <td><%=data[i].employment_board_salary%></td>
+                <td><%=data[i].employment_board_time%></td>
+            </tr>
+                <%}%>
+            
+        </table>
+        </div>
+        </div>

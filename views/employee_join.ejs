@@ -1,0 +1,45 @@
+<div class="w-25 m-auto">
+    <form class="form-signin" action="join" method="POST">
+        <div class="text-center mb-4">
+            <br /><br /><br /> <br /><br /><br /> <br />
+            <h1 class="h3 mb-3 font-weight-normal">Join</h1>
+
+        </div>
+
+        <div class="form-label-group">
+            <label>Email address</label>
+            <input type="text" class="form-control" placeholder="id" required="" name="employee_id"
+                autofocus="">
+        </div>
+
+        <div class="form-label-group">
+            <label>Password</label>
+            <input type="password" class="form-control" placeholder="Password" required=""
+                name="employee_pw">
+        </div>
+
+        <div class="form-label-group">
+            <label>Name</label>
+            <input type="text" class="form-control" placeholder="Name" required="" name="employee_name">
+        </div>
+
+        <div class="form-label-group">
+            <label>gender</label><br>
+            <input type="radio" name="employee_gender" value="남"/>남
+            <input type="radio" name="employee_gender" value="여"/>여
+        </div>
+        
+        <div class="form-label-group">
+                <label>phone</label><br>
+                <input type="text" name="employee_phone" class="form-control" placeholder="Phone">
+        </div>
+
+        <div class="form-label-group">
+                <label>address</label><br>
+                <input type="text" name="employee_address" class="form-control" placeholder="Address">
+        </div>
+        <input type="hidden" name="check" value="2">
+        <button class="btn btn-outline-primary btn-block" type="submit">Join in</button>
+
+    </form>
+</div>

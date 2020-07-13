@@ -1,0 +1,100 @@
+<!--이력서등록화면-->
+
+<div style="height:3000px"> 
+  <h1 style="text-align:center" >이력서</h1>
+  <form action="http://localhost:3000/application/submit" method="post" enctype="application/json" style="height:100%">
+    <table border="1" style="width: 60%;height:30%" align="center">
+
+
+      <tr>
+        <td  rowspan="4" style="width: 20%" colspan="1"><img src=`localhost:3000/img/${imgID}` alt="imageupload"> 
+        <input type="file" name="photo"></td>
+        <td style="width: 20%;background:#EEEEEE;" rowspan="1">성명</td>
+
+        <td rowspan="1" colspan="6"><input name="name" style="width:85%" type="text"> (인)</td>
+      </tr>
+
+      </tr>
+      <tr>
+          <td colspan="1" style="background:#EEEEEE;">주민등록번호</td>
+            <td colspan="6" style="width: 100%" colspan="2"><input style="width:100%" name="registration_number" placeholder="xxxxxx-xxxxxxx" type="text">
+            </td>
+     
+      <tr>
+          <td style="width: 30%;background:#EEEEEE;" >생년월일</td>
+          <td style="width: 100%" colspan="6"><input type="text" name="year"> 년
+          <input name="month" type="text">월 <input type="text" name="day"> 일
+          (만 <input type="text" name="old"> 세)</td>
+      </tr>
+      <tr><td style="width: 30%;background:#EEEEEE;" colspan="1">주소</td>
+
+        <td  colspan="6"><input style="width: 100%" type="text" name="address"></td>
+</tr>
+      <tr>
+
+        <td style="width: 30%;background:#EEEEEE;" rowspan="2" colspan="1">연락처</td>
+<td style="width: 30%;background:#EEEEEE;">휴대폰</td>
+
+        <td style="width: 30%"><input type="text" name="tel"></td>
+        <td style="background:#EEEEEE;" rowspan="1">email</td>
+
+        <td colspan="2"  rowspan="1"><input type="text" name="emai"></td>
+
+      </tr>
+
+      <tr>
+
+          <td style="background:#EEEEEE;">집</td>
+
+          <td colspan="6"> <input style="width:100%;" type="text" name="address"></td>
+
+      </tr>
+
+      <tr>
+        <td style="background: #EEEEEE;" >졸업연도</td>
+        <td style="width: 50%;background:#EEEEEE;" colspan="2">학력 및 경력 사항</td>
+
+        <td style="width: 30%;background:#EEEEEE;" colspan="2">비고</td>
+
+      </tr>
+
+      <tr>
+        <td><input type="date" style="width:100%" name="level_of_education[0]" ></td>
+        <td colspan="2"><input style="width:100%"colspan="4" type="text" name="level_of_education[0]"></td>
+
+        <td colspan="2"><input style="width:100%" type="text" name="level_of_education[0]"></td>
+      </tr>
+      <tr>
+          <td><input type="date" name="level_of_education[1] " style="width:100%"></td>
+        <td colspan="2"><input style="width:100%" type="text" name="level_of_education[1]"></td>
+        <td colspan="2"><input style="width:100%" type="text" name="level_of_education[1]"></td>
+
+      </tr>
+      <tr>
+
+          <td><input type="date" name="level_of_education[2]" style="width:100%"></td>
+
+
+        <td colspan="2"><input style="width:100%" type="text" name="level_of_education[2]"></td>
+
+        <td colspan="2"><input style="width:100%" type="text" name="level_of_education[2]"></td>
+
+      </tr>
+      <tr>
+          <td><input type="date" name="level_of_education[3]" style="width:100%"></td>
+
+
+        <td colspan="2"><input style="width:100%" type="text" name="level_of_education[3]"></td>
+
+        <td colspan="2"><input style="width:100%" type="text" name="level_of_education[3]"></td>
+      </tr>
+      <tr>
+        <td colspan="8" style="text-align: center;">
+      <button type="submit">제출</button>
+      <a href="/applciation"><button>취소</button></a>
+  </td>
+  </tr>
+    </table>
+    
+  </form>
+</div>
