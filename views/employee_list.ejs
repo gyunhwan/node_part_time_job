@@ -1,1 +1,16 @@
 <!--구직자목록화면-->
+<div class="container">
+            <table class="table table-bordered">
+                    <%for(var i=0 ; i<data.length;i++){%>
+                            <tr>
+                                <td>구직자이름</td>
+                                <td><%=data[i].employee_id%></td>
+                                <%if(data[i].state=='1'){%>
+                                <td><button style="width:30%;color: white;" class="btn btn-warning" onclick="location.href='../employer/employmentend?employee_id=<%=data[i].employee_id%>&employer_id=<%=sess.info.employer_id%>'">종료</button></td>
+                                <%}else if(data[i].state=='2'&&data[i].evaluation_employer!=1){%>
+                                    <td><button style="width:30%;color: white;" class="btn btn-warning" onclick="location.href='../employer/evaluation?employee_id=<%=data[i].employee_id%>'">평가등록</button></td>
+                                    <%}%>
+                            </tr>
+                                <%}%>
+            </table>
+    </div>

@@ -1,0 +1,93 @@
+<!--이력서상세화면-->
+<div class="container"> 
+        <h1 style="text-align:center" >이력서</h1>
+          <table class="table table-bordered" style="width: 70%;height:700px;text-align: center;" align="center">
+            <tr>
+              <th style="width: 20%;background-color:#F7F8E0" rowspan="1">성명</th>
+      
+              <td rowspan="1" colspan="6"><p><%=data[0].registration_name%> (인)</p></td>
+            </tr>
+      
+            </tr>
+            <tr>
+                <th colspan="1" style="background-color:#F7F8E0;">주민등록번호</th>
+                  <td colspan="6" style="width: 100%" colspan="2"><%=data[0].registration_number%>
+                  </td>
+           
+            <tr>
+                <th  style="width: 30%;background-color:#F7F8E0" >생년월일</th >
+                <td style="width: 100%" colspan="6"><%=data[0].registration_year%> 년
+                  <%=data[0].registration_month%>월 <%=data[0].registration_day%>일
+                (만 <%=data[0].registration_old%> 세)</td>
+            </tr>
+            <tr><th style="width: 30%;background-color:#F7F8E0" colspan="1">주소</th>
+      
+              <td  colspan="6"><%=data[0].registration_address%></td>
+      </tr>
+            <tr>
+      
+              <th style="width: 30%;background-color:#F7F8E0" rowspan="3" colspan="1">연락처</th>
+              <th style="width: 30%;background-color: #ECF6CE" >휴대폰</th>
+      
+              <td colspan=2 style="width: 30%"><%=data[0].registration_tel%></td>
+      
+            </tr>
+            <tr>
+                <th style="background-color: #ECF6CE" rowspan="1">email</th>
+      
+                <td colspan="2"  rowspan="1"><%=data[0].registration_email%></td>
+            </tr>
+            <tr>
+      
+                <th style="background-color: #ECF6CE;">집</th>
+      
+                <td colspan="6"> <%=data[0].registration_home%></td>
+      
+            </tr>
+      
+            <tr>
+              <th style="background-color:#F7F8E0" >졸업연도</th>
+              <th style="width: 50%;background-color:#F7F8E0" colspan="2">학력 및 경력 사항</th>
+      
+              <th style="width: 30%;background-color:#F7F8E0" colspan="2">비고</th>
+      
+            </tr>
+      
+            <tr>
+              <td><%=data2[0].level_of_education_11%></td>
+              <td colspan="2"><%=data2[0].level_of_education_12%></td>
+      
+              <td colspan="2"><%=data2[0].level_of_education_13%></td>
+            </tr>
+            <tr>
+                    <td><%=data2[0].level_of_education_21%></td>
+                    <td colspan="2"><%=data2[0].level_of_education_22%></td>
+            
+                    <td colspan="2"><%=data2[0].level_of_education_23%></td>
+                  </tr>
+            <tr>
+      
+                <td><%=data2[0].level_of_education_31%></td>
+      
+      
+              <td colspan="2"><%=data2[0].level_of_education_32%></td>
+      
+              <td colspan="2"><%=data2[0].level_of_education_33%></td>
+      
+            </tr>
+            <tr>
+                <td><%=data2[0].level_of_education_41%></td>
+      
+      
+              <td colspan="2"><%=data2[0].level_of_education_42%></td>
+      
+              <td colspan="2"><%=data2[0].level_of_education_43%></td>
+            </tr>
+            <tr>
+              <td colspan="8" style="text-align: center;">`
+                <input type="hidden" name="employee_id" value="<%=sess.info.employee_id%>">
+        </td>
+        </tr>
+          </table>
+          
+      </div>

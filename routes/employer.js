@@ -115,10 +115,150 @@ router.post('/updateboard', function(req, res, next) {
 });
 
 //구직자목록화면
-
+router.get('/employeelist', function(req, res, next) {
+	var sess = req.session;
+	var data = {};
+	pool.getConnection((err, conn) => {
+		if (err) {
+			throw err;
+		}
+		conn.query(
+			'SELECT * FROM employment WHERE employer_id=? AND state=? OR state = ?;',
+			[req.query.employer_id, 1, 2],
+			(err, row) => {
+				conn.release();
+				if (err) {
+					throw err;
+				}
+				res.render('index', { page: './employee_list', data: row, sess: sess });
+			}
+		);
+	});
+});
 //구직자평가등록화면
+router.get('/evaluation', function(req, res, next) {
+	var sess = req.session;
+	var data = {};
+	pool.getConnection((err, conn) => {
+		if (err) {
+			throw err;
+		}
+		conn.query(
+			'SELECT * FROM employee WHERE employee_id = ? ;',
+			[req.query.employee_id],
+			(err, row) => {
+				conn.release();
+				if (err) {
+					throw err;
+				}
+				res.render('index', {
+					page: './employee_evaluation',
+					data: row,
+					sess: sess
+				});
+			}
+		);
+	});
+});
+
+//구직자 평가 등록
+router.post('/evaluation', function(req, res, next) {
+	var sess = req.session;
+	pool.getConnection((err, conn) => {
+		if (err) {
+			throw err;
+		}
+		conn.query(
+			'INSERT INTO employee_evaluation(employee_evaluation_content,employee_evaluation_score,employee_id,employer_id) VALUES (?,?,?,?); ',
+			[
+				req.body.employee_evaluation_content,
+				req.body.employee_evaluation_score,
+				req.body.employee_id,
+				req.body.employer_id
+			],
+			(err, row) => {
+				if (err) {
+					throw err;
+				}
+				conn.query(
+					'UPDATE employment SET evaluation_employer = ? WHERE employee_id = ? AND employer_id=?',
+					[1, req.body.employee_id, req.body.employer_id],
+					(err, row) => {
+						conn.release();
+						if (err) {
+							throw err;
+						}
+						res.redirect(
+							'../employer/employeelist?employer_id=' + req.query.employer_id
+						);
+					}
+				);
+			}
+		);
+	});
+});
 
 //구직자평가내용화면
+router.get('/evaluationdatail', function(req, res, next) {
+	var sess = req.session;
+	var data = {};
+	pool.getConnection((err, conn) => {
+		if (err) {
+			throw err;
+		}
+		conn.query(
+			'SELECT * FROM employee_evaluation WHERE employee_id = ? ;',
+			[req.query.employee_id],
+			(err, row) => {
+				conn.release();
+				if (err) {
+					throw err;
+				}
+				res.render('index', {
+					page: './employee_evaluation_detail',
+					data: row,
+					sess: sess
+				});
+			}
+		);
+	});
+});
+
+//이력서상세화면
+router.get('/applicationdatail', function(req, res, next) {
+	var sess = req.session;
+	var data = {};
+	pool.getConnection((err, conn) => {
+		if (err) {
+			throw err;
+		}
+		conn.query(
+			'SELECT * FROM registration WHERE employee_id = ? ;',
+			[req.query.employee_id],
+			(err, row) => {
+				if (err) {
+					throw err;
+				}
+				conn.query(
+					'SELECT * FROM level_of_education WHERE employee_id = ? ;',
+					[req.query.employee_id],
+					(err, result) => {
+						conn.release();
+						if (err) {
+							throw err;
+						}
+						res.render('index', {
+							page: './application_detail',
+							data: row,
+							data2: result,
+							sess: sess
+						});
+					}
+				);
+			}
+		);
+	});
+});
 
 //채용등록화면
 router.get('/regist', function(req, res, next) {
@@ -154,6 +294,104 @@ router.post('/regist', function(req, res, next) {
 					throw err;
 				}
 				res.redirect('../');
+			}
+		);
+	});
+});
+
+//구직신청조회화면
+router.get('/registlist', function(req, res, next) {
+	var sess = req.session;
+	var data = {};
+	pool.getConnection((err, conn) => {
+		if (err) {
+			throw err;
+		}
+		conn.query(
+			'SELECT * FROM employment WHERE employer_id = ? AND state= ?;',
+			[req.query.employer_id, 0],
+			(err, row) => {
+				conn.release();
+				if (err) {
+					throw err;
+				}
+				res.render('index', {
+					page: './employment_regist_list',
+					data: row,
+					sess: sess
+				});
+			}
+		);
+	});
+});
+
+//채용승인
+router.get('/registapproval', function(req, res, next) {
+	var sess = req.session;
+	var data = {};
+	pool.getConnection((err, conn) => {
+		if (err) {
+			throw err;
+		}
+		conn.query(
+			'UPDATE employment SET state= ? WHERE employee_id=? AND employer_id=?',
+			[1, req.query.employee_id, req.query.employer_id],
+			(err, row) => {
+				conn.release();
+				if (err) {
+					throw err;
+				}
+				res.redirect(
+					'../employer/registlist?employer_id=' + req.query.employer_id
+				);
+			}
+		);
+	});
+});
+
+//채용거절
+router.get('/registrefusal', function(req, res, next) {
+	var sess = req.session;
+	var data = {};
+	pool.getConnection((err, conn) => {
+		if (err) {
+			throw err;
+		}
+		conn.query(
+			'DELETE FROM employment WHERE employee_id=? AND employer_id=? ',
+			[req.query.employee_id, req.query.employer_id],
+			(err, row) => {
+				conn.release();
+				if (err) {
+					throw err;
+				}
+				res.redirect(
+					'../employer/registlist?employer_id=' + req.query.employer_id
+				);
+			}
+		);
+	});
+});
+
+//구직종료
+router.get('/employmentend', function(req, res, next) {
+	var sess = req.session;
+	var data = {};
+	pool.getConnection((err, conn) => {
+		if (err) {
+			throw err;
+		}
+		conn.query(
+			'UPDATE employment SET state= ? WHERE employee_id=? AND employer_id=?',
+			[2, req.query.employee_id, req.query.employer_id],
+			(err, row) => {
+				conn.release();
+				if (err) {
+					throw err;
+				}
+				res.redirect(
+					'../employer/employeelist?employer_id=' + req.query.employer_id
+				);
 			}
 		);
 	});
@@ -224,7 +462,7 @@ router.post('/groupcreate', function(req, res, next) {
 	});
 });
 
-//그룹신청화면
+//그룹신청
 router.post('/group/application/:groupnum', function(req, res, next) {
 	var sess = req.session;
 	var group_num = req.params.groupnum;
@@ -337,20 +575,35 @@ router.get('/group/board/:groupnum', function(req, res, next) {
 router.get('/groupdetail/:groupboardnum', function(req, res, next) {
 	var sess = req.session;
 	if (sess.info.group_state == 2) {
+		console.log(req.params.groupboardnum);
+
 		pool.getConnection((err, conn) => {
 			conn.query(
 				'SELECT * FROM group_board WHERE group_board_num=?',
 				[req.params.groupboardnum],
 				function(err, row) {
-					conn.release();
 					if (err) {
+						conn.release();
 						console.error(err);
 					}
-					res.render('index', {
-						page: './group_board_detail',
-						sess: sess,
-						data: row
-					});
+					conn.query(
+						'SELECT * FROM comment WHERE group_board_num=?',
+						[req.params.groupboardnum],
+						(err, row2) => {
+							conn.release();
+							if (err) {
+								console.error(err);
+							}
+							console.log(row2);
+
+							res.render('index', {
+								page: './group_board_detail',
+								comment: row2,
+								sess: sess,
+								data: row
+							});
+						}
+					);
 				}
 			);
 		});
@@ -411,14 +664,12 @@ router.get('/group/board/update/:group_num', function(req, res, next) {
 	pool.getConnection((err, conn) => {
 		conn.query(
 			'SELECT * FROM group_board WHERE group_board_num=?',
-			[req.params.group_num],
+			[req.params.group_num, sess.info.employer_id],
 			(err, row) => {
 				conn.release();
 				if (err) {
 					console.error(err);
 				}
-				console.log(row);
-
 				res.render('index', {
 					page: './group_board_update',
 					sess: sess,
@@ -463,6 +714,25 @@ router.get('/group/board/delete/:group_num', function(req, res, next) {
 				}
 				console.log(row);
 				res.redirect(`../${sess.info.group_num}`);
+			}
+		);
+	});
+});
+//그룹 게시판 댓글 등록
+router.post('/groupComment', (req, res, next) => {
+	var sess = req.session;
+	pool.getConnection((err, conn) => {
+		conn.query(
+			'INSERT INTO comment(group_board_num,employer_id,comment_comment) VALUES(?,?,?)',
+			[req.body.num, sess.info.employer_id, req.body.comment],
+			(err, row) => {
+				conn.release();
+				if (err) {
+					console.error(err);
+				}
+				console.log(row);
+
+				res.redirect(`../employer/groupdetail/${req.body.num}`);
 			}
 		);
 	});
@@ -579,7 +849,7 @@ router.get('/group/userlist', function(req, res, next) {
 					conn.release();
 					throw err;
 				}
-
+				console.log(row);
 				if (row[0].group_leader != sess.info.employer_id) {
 					conn.release();
 					res.render('index', {

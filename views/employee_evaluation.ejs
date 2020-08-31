@@ -1,1 +1,48 @@
 <!--구직자평가등록화면-->
+
+<form class="form-signin" action="../employer/evaluation" method="POST">
+	<div class="container">
+		<table class="table table-bordered">
+			<tr>
+				<td>구직자 이름</td>
+				<td>
+					<%=data[0].employee_id%><input
+						type="hidden"
+						name="employee_id"
+						value="<%=data[0].employee_id%>"
+					/>
+				</td>
+			</tr>
+			<tr>
+				<td>구직자 평가</td>
+				<td>
+					<textarea
+						cols="50"
+						rows="20"
+						name="employee_evaluation_content"
+					></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td>구직자 평점</td>
+				<td><input type="text" name="employee_evaluation_score" /></td>
+			</tr>
+			<tr>
+				<input
+					type="hidden"
+					name="employer_id"
+					value="<%=sess.info.employer_id%>"
+				/>
+
+				<td style="text-align: center;" colspan="2">
+					<input
+						style="width:30%;color: white;"
+						class="btn btn-warning"
+						type="submit"
+						value="등록"
+					/>
+				</td>
+			</tr>
+		</table>
+	</div>
+</form>

@@ -42,6 +42,16 @@
                 <label>businessnumber</label><br>
                 <%=data[0].employer_businessnumber%>
         </div>
+        <div class="form-label-group">
+            <label>grade_state</label><br>
+            <%if(data[0].employer_grade_state==0){%>
+                보통
+                <%} else if(data[0].employer_grade_state==1){%>
+                    우수
+                    <%} else if(data[0].employer_grade_state==2){%>
+                        최우수
+                        <%}%>
+    </div>
         <input type="hidden" name="check" value="2">
         <button class="btn btn-outline-primary btn-block" type="submit">수정</button>
 

@@ -19,21 +19,26 @@
   
       <form action=<%=`http://localhost:3000/employer/group/board/update/${data[0].group_board_num}`%> method="post" enctype="application/json"
         style="height:100%">
-      <div style="margin-top:100px; height:500px">
-        <div style="display: block;">
-          <div  style="width:30%;display:block;">제목</div>
-          <div style="width:50%;display:block"><input name="name" style="width:85%" type="text" value=<%=data[0].group_board_name%>></div>
+        <table class="table table-bordered">
+            <tr>
+              <th>제목</th>
+              <td><input name="name" style="width:85%" value=<%=data[0].group_board_name%> type="text"></td>
+              <th>작성자</th>
+              <td><%=sess.info.employer_id%></td>
+            </tr>
+            <tr>
+            </tr>
+            <tr>
+              <th>내용</th>
+              <td colspan="3">
+                <textarea rows="10" cols="30" name="content"  style="width:1000px;height:300px" ><%=data[0].group_board_content%>
+                </textarea></td>
+            </tr>
+          </table>
         </div>
-        <div>작성자</div>
-        <div><%=data[0].employer_id%></div>
-        <div>
-          <div >내용</div>
-          <div>
-            <input style="width:100%" name="content"
-            type="text" value=<%=data[0].group_board_content%>>
-          </div>
-        </div>
-        <button type="submit">수정</button>
-        <input type="button" onclick="return back(this.form)" value="취소">
+        <div style="text-align: center;">
+          <button class="btn btn-warning" style="color:white;width:20%" type="submit">수정</button>
+            <input class="btn btn-warning" style="color:white;width:20%" type="button" onclick="return back(this.form)" value="취소">
+            
       </form>
   </div>

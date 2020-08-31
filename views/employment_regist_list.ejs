@@ -1,1 +1,21 @@
 <!--구직신청조회화면-->
+<div class="container">
+        <table class="table table-bordered">
+                <tr>
+                        <th>구직자이름</th>
+                        <th>이력서</th>
+                        <th>평가</th>
+                        <th>승인</th>
+                        <th>거절</th>
+                    </tr>
+                <%for(var i=0 ; i<data.length;i++){%>
+                        <tr>
+                            <td><%=data[i].employee_id%></td>
+                            <td><button class="btn btn-warning" style="color:white" onclick="location.href='../employer/applicationdatail?employee_id=<%=data[i].employee_id%>'">이력서보기</button></td>
+                            <td><button class="btn btn-warning" style="color:white" onclick="location.href='../employer/evaluationdatail?employee_id=<%=data[i].employee_id%>'">평가보기</button></td>
+                            <td><button class="btn btn-warning" style="color:white" onclick="location.href='../employer/registapproval?employee_id=<%=data[i].employee_id%>&employer_id=<%=sess.info.employer_id%>'">승인</button></td>
+                            <td><button class="btn btn-warning" style="color:white" onclick="location.href='../employer/registrefusal?employee_id=<%=data[i].employee_id%>&employer_id=<%=sess.info.employer_id%>'">거절</button></td>
+                        </tr>
+                            <%}%>
+        </table>
+</div>

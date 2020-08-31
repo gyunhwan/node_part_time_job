@@ -1,1 +1,19 @@
 <!--채용자평가상세화면-->
+<div class="container">
+    <table class="table table-bordered">
+        <tr>
+            <td>채용자 아이디</td>
+            <td>채용자 평가</td>
+            <td>채용자 평점</td>
+            <td>평가구직자 아이디</td>
+        </tr>
+        <%for(var i=0 ; i<data.length;i++){%>
+                <tr>
+                    <td><%=data[i].employer_id%></td>
+                    <td><%=data[i].employer_evaluation_content%></a></td>
+                    <td><%=data[i].employer_evaluation_score%></td>
+                    <td><%=data[i].employee_id%></td>
+                </tr>
+                    <%}%>
+    </table>
+</div>

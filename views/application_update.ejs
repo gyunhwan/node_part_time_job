@@ -1,0 +1,86 @@
+<!--이력서수정화면-->
+<div style="height:3000px"> 
+    <h1 style="text-align:center" >이력서</h1>
+    <form action="applicationupdate" method="post" enctype="application/json" style="height:100%">
+      <table border="1" style="width: 60%;height:30%" align="center">
+        <tr>
+          <th style="width: 20%;background-color:#F7F8E0" rowspan="1">성명</th>
+  
+          <td rowspan="1" colspan="6"><input name="registration_name" style="width:85%" type="text" value="<%=data[0].registration_name%>"> (인)</td>
+        </tr>
+  
+        </tr> 
+        <tr>
+            <th colspan="1"  style="background-color:#F7F8E0">주민등록번호</th>
+              <td colspan="6" style="width: 100%" colspan="2"><input style="width:100%" name="registration_number" value="<%=data[0].registration_number%>" placeholder="xxxxxx-xxxxxxx" type="text">
+              </td>
+       
+        <tr>
+            <th style="width: 30%;background-color:#F7F8E0" >생년월일</th>
+            <td style="width: 100%" colspan="6"><input type="text" name="year" value="<%=data[0].registration_year%>"> 년
+            <input name="month" type="text" value="<%=data[0].registration_month%>" >월 <input type="text" name="day" value="<%=data[0].registration_day%>"> 일
+            (만 <input type="text" name="registration_old" value="<%=data[0].registration_old%>" > 세)</td>
+        </tr>
+        <tr>
+          <th style="width: 30%;background-color:#F7F8E0" colspan="1">주소</th>
+          <td  colspan="6"><input style="width: 100%" type="text" name="registration_address" value="<%=data[0].registration_address%>"></td>
+        </tr>
+        <tr>
+          <th style="width: 30%;background-color:#F7F8E0" rowspan="2" colspan="1">연락처</th>
+          <th style="width: 30%;background-color: #ECF6CE">휴대폰</th>
+          <td style="width: 30%"><input type="text" name="registration_tel" value="<%=data[0].registration_tel%>" ></td>
+          <th  rowspan="1" style="background-color:#ECF6CE">email</th>
+          <td colspan="2"  rowspan="1"><input type="text" name="registration_email" value="<%=data[0].registration_email%>" ></td>
+        </tr>
+  
+        <tr>
+            <th style="background-color:#ECF6CE">집</th>
+            <td colspan="6"> <input style="width:100%;" type="text" name="registration_home" value="<%=data[0].registration_home%>" ></td>
+  
+        </tr>
+  
+        <tr>
+          <th style="background-color:#F7F8E0"  >졸업연도</th>
+          <th style="width: 50%;background-color:#F7F8E0" colspan="2">학력 및 경력 사항</th>
+  
+          <th style="width: 30%;background-color:#F7F8E0" colspan="2">비고</th>
+  
+        </tr>
+  
+        <tr>
+          <td><input type="date" style="width:100%" name="level_of_education_11" value="<%=data2[0].level_of_education_11%>" ></td>
+          <td colspan="2"><input style="width:100%"colspan="4" type="text" name="level_of_education_12" value="<%=data2[0].level_of_education_12%>" ></td>
+  
+          <td colspan="2"><input style="width:100%" type="text" name="level_of_education_13" value="<%=data2[0].level_of_education_13%>" ></td>
+        </tr>
+        <tr>
+                <td><input type="date" style="width:100%" name="level_of_education_21" value="<%=data2[0].level_of_education_21%>" ></td>
+                <td colspan="2"><input style="width:100%"colspan="4" type="text" name="level_of_education_22" value="<%=data2[0].level_of_education_22%>"></td>
+        
+                <td colspan="2"><input style="width:100%" type="text" name="level_of_education_23" value="<%=data2[0].level_of_education_23%>"></td>
+              </tr>
+        <tr>
+  
+            <td><input type="date" name="level_of_education_31" style="width:100%" value="<%=data2[0].level_of_education_31%>"></td>
+  
+  
+          <td colspan="2"><input style="width:100%" type="text" name="level_of_education_32" value="<%=data2[0].level_of_education_32%>" ></td>
+  
+          <td colspan="2"><input style="width:100%" type="text" name="level_of_education_33" value="<%=data2[0].level_of_education_33%>" ></td>
+  
+        </tr>
+        <tr>
+            <td><input type="date" name="level_of_education_41" style="width:100%" value="<%=data2[0].level_of_education_41%>" ></td>
+  
+  
+          <td colspan="2"><input style="width:100%" type="text" name="level_of_education_42" value="<%=data2[0].level_of_education_42%>" ></td>
+  
+          <td colspan="2"><input style="width:100%" type="text" name="level_of_education_43" value="<%=data2[0].level_of_education_43%>"></td>
+        </tr>
+        <tr style="text-align:center">
+            <td colspan="5"><button class="btn btn-warning " style="width:30%;color:white" type="submit">수정</button></td> 
+        </tr>
+      </table>
+      <input type="hidden" name="employee_id" value="<%=sess.info.employee_id%>">
+    </form>
+  </div>

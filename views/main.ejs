@@ -1,42 +1,78 @@
-<style>
-    td {
-        border-left:0;
-        border-top:0;
-        border-bottom:0;
-        border-right:1;
-    }
-</style>
-<script>
-    var a= alert(message);
-</script>
-<div class="w-25 m-auto">
-<br><br>
-<div id="carouselExampleIndicators" class="text-center mb-4" data-ride="carousel">
-<form action="../search" method="GET">
-<table>
-    <tr>
-        <td>지역</td>
-        <td><input type="text" name="employment_board_address" placeholder="지역"></td>
-        <td><input type="submit" value="검색"></td>
-    </tr>
-</table>
-</form>
-
-<table >
-    <tr>
-        <td>기업명</td>
-        <td>모집제목</td>
-        <td>급여</td>
-        <td>근무시간</td>
-    </tr>
-    <%for(var i=0 ; i<data.length;i++){%>
-    <tr>
-        <td><%=data[i].employment_board_name%></td>
-        <td><a href="detail?employment_board_num=<%=data[i].employment_board_num%>"><%=data[i].employment_board_companyname%></a></td>
-        <td><%=data[i].employment_board_salary%></td>
-        <td><%=data[i].employment_board_time%></td>
-    </tr>
-        <%}%>
+<div class="container">
+    <br><br>
+    <div id="carouselExampleIndicators" class="text-center mb-4">
+        <form action="../search" method="GET" >
+            <table style="margin-left:70%">
+                <tr>
+                    <td><input class="form-control"type="text" name="employment_board_address" placeholder="지역"></td>
+                    <td><input class="btn btn-warning" style="color:white" type="submit" value="검색"></td>
+                </tr>
+        </form>
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="background-color:#EDE0B1">
+            <div class="carousel-inner" style="padding:1px" >
+        <%for(var b=0; b< best10.length;b++){
+            if(b==0){
+            %>
+            <div class="carousel-item active">
+                <div class="card" style="width: 100%;" style="text-align:center" >
+                <div class="card-body">
+                        <%if(best10[b].group_grade_code==2){%>
+                            <img style="width:100px;height:100px" src="./images/BOB.png" class="card-img-top" alt="no Image">   
+                        <%}else{%>
+                            <img style="width:100px;height:100px" src="./images/BEST.jpg" class="card-img-top" alt="no Image">   
+                            <%}%>
+                    <h5 class="card-title">그룹인원:<%=best10[b].cnt%></h5>
+                    <p class="card-text">그룹이름:<%=best10[b].group_name%></p>
+                    <a href="group?group_num=<%=best10[b].group_num%>" class="btn btn-warning" style="color:white">모집 확인 하기</a>
+                </div>
+            </div>
+        </div>
+        <%}else{%>
+            <div class="carousel-item ">
+                    <div class="card" style="width:100%;" >
+                    
+                    <div class="card-body">
+                            <%if(best10[b].group_grade_code==2){%>
+                                <img style="width:100px;height:100px" src="./images/BOB.png" class="card-img-top" alt="no Image">   
+                            <%}else{%>
+                                <img style="width:100px;height:100px" src="./images/BEST.jpg" class="card-img-top" alt="no Image">   
+                                <%}%>
+                        <h5 class="card-title">그룹인원:<%=best10[b].cnt%></h5>
+                        <p class="card-text">그룹이름:<%=best10[b].group_name%></p>
+                        <a href="group?group_num=<%=best10[b].employment_board_num%>" class="btn btn-warning" style="color:white">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <%}%>
+          <%}%>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>모집제목</th>
+                    <th scope="col">기업명</th>
+                    <th>급여</th>
+                    <th>근무시간</th>
+                </tr>
+            </thead>
+            <%for(var i=0 ; i<data.length;i++){%>
+            <tr>
+                <td><%=data[i].employment_board_name%></td>
+                <td><a href="detail?employment_board_num=<%=data[i].employment_board_num%>"><%=data[i].employment_board_companyname%></a>
+                </td>
+                <td><%=data[i].employment_board_salary%></td>
+                <td><%=data[i].employment_board_time%></td>
+            </tr>
+            <%}%>
     
 </table>
 </div>

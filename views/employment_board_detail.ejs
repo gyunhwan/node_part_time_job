@@ -1,59 +1,80 @@
 <!--채용게시판상세화면-->
 
-<div class="w-25 m-auto">
+<div  style="width:100%">
 	<br /><br />
-	<div
-		id="carouselExampleIndicators"
-		class="text-center mb-4"
-		data-ride="carousel"
-	>
-		<h1><%=data[0].employment_board_name%></h1>
-		<table border="1">
+	<div id="carouselExampleIndicators" class="container" data-ride="carousel">
+		<h1 style="text-align: center;"><%=data[0].employment_board_name%></h1>
+		<table class="table table-bordered" style="width:100%;text-align:center">
 			<tr>
-				<td colspan="2">모집 및 근무조건</td>
+				<th style="background-color:#ECF6CE" colspan="2">모집 및 근무조건</th>
 			</tr>
 			<tr>
-				<td>업체명</td>
+				<th style="width:30%;background-color:#F7F8E0">업체명</th>
 				<td><%=data[0].employment_board_companyname%></td>
 			</tr>
 			<tr>
-				<td>업종</td>
+				<th style="width:30%;background-color:#F7F8E0">업종</th>
 				<td><%=data[0].employment_board_industry%></td>
 			</tr>
 			<tr>
-				<td>모집인원</td>
+				<th style="width:30%;background-color:#F7F8E0">모집인원</th>
 				<td><%=data[0].employment_board_personnel%></td>
 			</tr>
 			<tr>
-				<td>근무기간</td>
+				<th style="width:30%;background-color:#F7F8E0">근무기간</th >
 				<td><%=data[0].employment_board_period%></td>
 			</tr>
 			<tr>
-				<td>근무요일</td>
+				<th style="width:30%;background-color:#F7F8E0">근무요일</th >
 				<td><%=data[0].employment_board_day%></td>
 			</tr>
 			<tr>
-				<td>근무시간</td>
+				<th style="width:30%;background-color:#F7F8E0">근무시간</th>
 				<td><%=data[0].employment_board_time%></td>
 			</tr>
 			<tr>
-				<td>시급</td>
+				<th style="width:30%;background-color:#F7F8E0">시급</th>
 				<td><%=data[0].employment_board_salary%></td>
 			</tr>
 			<tr>
-				<td>고용형태</td>
+				<th style="width:30%;background-color:#F7F8E0">고용형태</th>
 				<td><%=data[0].employment_board_type%></td>
+			</tr>
+			<tr>
+				<th style="width:30%;background-color:#F7F8E0">주소</th>
+				<td><%=data[0].employment_board_address%></td>
 			</tr>
 		</table>
 
 		<%if(sess.info!=null && sess.info.check==1){%>
-		<input type="button" onclick="location.href='#'" value="고용신청" />
-		<%}else if(sess.info!=null && sess.info.check==2){%>
+		<div style="text-align: center;">
+			<input
+				type="button"
+				class="btn btn-warning"
+				style="color:white"
+				onclick="location.href='../employee/employeeapplication?employment_board_num=<%=data[0].employment_board_num%>'"
+				value="고용신청"
+			/>
+			<input
+				type="button"
+				class="btn btn-warning"
+				style="color:white"
+				onclick="location.href='../employee/evaluationdatail?employer_id=<%=data[0].employer_id%>'"
+				value="채용자평가"
+			/>
+		</div>
+        <%}else if(sess.info!=null && sess.info.check==2){%>
+        </div>
+        <div style="text-align:center">
 		<input
 			type="button"
+			class="btn btn-warning"
+			style="color:white"
 			onclick="location.href='../employer/updateboard?employment_board_num=<%=data[0].employment_board_num%>'"
 			value="수정"
-		/>
+        />
+    </div>
+        </div>
 		<%}%>
 	</div>
 </div>

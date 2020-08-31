@@ -1,1 +1,76 @@
 <!--구직신청화면-->
+
+<div>
+	<br /><br />
+	<div
+		id="carouselExampleIndicators"
+		class="text-center mb-4"
+		data-ride="carousel"
+	>
+		<h1><%=data[0].employment_board_name%></h1>
+		<form action="../employee/employeeapplication" method="POST">
+			<div class="container">
+				<table class="table table-bordered">
+					<tr>
+						<th style="background-color:#ECF6CE" colspan="2">
+							모집 및 근무조건
+						</th>
+					</tr>
+					<tr>
+						<th style="width:30%;background-color:#F7F8E0">업체명</th>
+						<td><%=data[0].employment_board_companyname%></td>
+					</tr>
+					<tr>
+						<th style="width:30%;background-color:#F7F8E0">업종</th>
+						<td><%=data[0].employment_board_industry%></td>
+					</tr>
+					<tr>
+						<th style="width:30%;background-color:#F7F8E0">모집인원</th>
+						<td><%=data[0].employment_board_personnel%></td>
+					</tr>
+					<tr>
+						<th style="width:30%;background-color:#F7F8E0">근무기간</th>
+						<td><%=data[0].employment_board_period%></td>
+					</tr>
+					<tr>
+						<th style="width:30%;background-color:#F7F8E0">근무요일</th>
+						<td><%=data[0].employment_board_day%></td>
+					</tr>
+					<tr>
+						<th style="width:30%;background-color:#F7F8E0">근무시간</th>
+						<td><%=data[0].employment_board_time%></td>
+					</tr>
+					<tr>
+						<th style="width:30%;background-color:#F7F8E0">시급</th>
+						<td><%=data[0].employment_board_salary%></td>
+					</tr>
+					<tr>
+						<th style="width:30%;background-color:#F7F8E0">고용형태</th>
+						<td><%=data[0].employment_board_type%></td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<input
+								style="width:300px"
+								class="btn btn-warning"
+								type="submit"
+								value="신청"
+							/>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<input type="hidden" name="state" value="0" />
+			<input
+				type="hidden"
+				name="employer_id"
+				value="<%=data[0].employer_id%>"
+			/>
+			<input
+				type="hidden"
+				name="employee_id"
+				value="<%=sess.info.employee_id%>"
+			/>
+		</form>
+	</div>
+</div>

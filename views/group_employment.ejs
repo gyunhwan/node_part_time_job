@@ -1,0 +1,28 @@
+<div>
+	<table class="table table-bordered" style="text-align: center;">
+		<thead>
+			<tr>
+				<th>모집제목</th>
+				<th scope="col">기업명</th>
+				<th>급여</th>
+        <th>근무시간</th>
+        <th>주소</th>
+			</tr>
+		</thead>
+		<% for( var i = 0 ; i<data.length; i++){%>
+			<tr>
+				<td><%=data[i].employment_board_name%></td>
+				<td>
+					<a
+						href="detail?employment_board_num=<%=data[i].employment_board_num%>"
+						><%=data[i].employment_board_companyname%></a
+					>
+				</td>
+				<td><%=data[i].employment_board_salary%></td>
+        <td><%=data[i].employment_board_time%></td>
+        <td><%=data[i].employment_board_address%></td>
+      </tr>
+      <%}%>
+		
+	</table>
+</div>

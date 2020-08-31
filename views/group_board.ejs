@@ -1,65 +1,67 @@
 <!--그룹게시판-->
 <style>
-	table {
-		border-collapse: collapse;
-		text-align: left;
-		line-height: 1.5;
-	}
-
-	table thead th {
-		padding: 10px;
-		font-weight: bold;
-		vertical-align: top;
-		color: #369;
-		border-bottom: 3px solid #036;
-	}
-
-	table tbody th {
-		width: 150px;
-		padding: 10px;
-		font-weight: bold;
-		vertical-align: top;
-		border-bottom: 1px solid #ccc;
-		background: #f3f6f7;
-	}
-
-	table td {
-		width: 350px;
-		padding: 10px;
-		vertical-align: top;
-		border-bottom: 1px solid #ccc;
-	}
-	table {
-		width: 100%;
-		text-align: center;
-	}
-</style>
-<script>
-  var goBack=function(e){
-    location.href=`/employer/groupdetail/${e}`
-  }
-</script>
-<div>
-	<table>
-		<thead>
-			<tr>
-				<th>넘버</th>
-				<th>제목</th>
-				<th>작성</th>
-				<th>내용</th>
-			</tr>
-		</thead>
-		<tbody>
-        <%for(var i=0;i<data.length;i++){%>
-         
-        <tr onclick="return goBack(<%=data[i].group_board_num%>)">
-          <th><%=data[i].group_board_num%></th>
-          <th><%=data[i].group_board_name%></th>
-          <th><%=data[i].group_board_content.substring(0,10)%></th>
-          <th><%=data[i].employer_id%></th>
-        </tr>
-        <%}%>
-    </tbody>
-  </table>
-  <a href=<%=`/employer/group/board/regist/${sess.info.group_num}`%>><button>글작성</button></a>
+    table {
+       border-collapse: collapse;
+       text-align: left;
+       line-height: 1.5;
+    }
+ 
+    table thead th {
+       padding: 10px;
+       font-weight: bold;
+       vertical-align: top;
+       color: #369;
+       border-bottom: 3px solid #036;
+    }
+ 
+    table tbody th {
+       width: 150px;
+       padding: 10px;
+       font-weight: bold;
+       vertical-align: top;
+       border-bottom: 1px solid #ccc;
+       background: #f3f6f7;
+    }
+ 
+    table td {
+       width: 350px;
+       padding: 10px;
+       vertical-align: top;
+       border-bottom: 1px solid #ccc;
+    }
+    table {
+       width: 100%;
+       text-align: center;
+    }
+ </style>
+ <script>
+   var goBack=function(e){
+     location.href=`/employer/groupdetail/${e}`
+   }
+ </script>
+ <div>
+    <table>
+       <thead>
+          <tr>
+             <th>넘버</th>
+             <th>제목</th>
+             <th>작성</th>
+             <th>내용</th>
+          </tr>
+       </thead>
+       <tbody>
+         <%for(var i=0;i<data.length;i++){%>
+          
+         <tr onclick="return goBack(<%=data[i].group_board_num%>)">
+           <th><%=data[i].group_board_num%></th>
+           <th><%=data[i].group_board_name%></th>
+           <th><%=data[i].employer_id%></th>
+           <th><%=data[i].group_board_content.substring(0,10)%></th>
+         </tr>
+         <%}%>
+     </tbody>
+   </table>
+   <div>
+   <a href=<%=`/employer/group/board/regist/${sess.info.group_num}`%>><button class="btn btn-warning" style="width:300px;color:white;margin-top:10px">글작성</button></a>
+   </div>
 </div>

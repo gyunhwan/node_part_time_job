@@ -12,7 +12,7 @@
         padding: 10px;
         font-weight: bold;
         vertical-align: top;
-        color: #369;
+        color: black;
         border-bottom: 3px solid #036;
       }
   
@@ -38,7 +38,7 @@
       state=e
     }
     %>
-    <table style="margin:auto;width:100%;border-bottom:1">
+    <table style="margin:auto;width:100%;border-bottom:1;text-align: center;">
       <thead>
         <tr>
           <th>유저이름</th>
@@ -52,13 +52,13 @@
         <tr>
             <th><%=data[i].employer_name%></th>
             <th><%=data[i].employer_address%></th>
-            <th><%=data[i].employer_grade_code%></th>
+            <th><%=data[i].employer_grade_state%></th>
             <%if(data[i].group_state!=2){%>
-            <th><a href=<%=`/employer/group/userok/${data[i].employer_id}?method=put`%>><button>승인 하기</button></a></th>
-            <th><a href=<%=`/employer/group/userok/${data[i].employer_id}?method=cancle`%> > <button>거절 하기</button>  </a></th>
+            <th><a href=<%=`/employer/group/userok/${data[i].employer_id}?method=put`%>><button class="btn btn-warning" style="width:50%;color:white">승인 하기</button></a></th>
+            <th><a href=<%=`/employer/group/userok/${data[i].employer_id}?method=cancle`%> > <button class="btn btn-warning" style="width:50%;color:white">거절 하기</button>  </a></th>
             <%}else{%>
 
-            <th colspan=2><a href=<%=`/employer/group/userok/${data[i].employer_id}?method=delete`%>><button>삭제하기</button></a></th>
+            <th colspan=2><a href=<%=`/employer/group/userok/${data[i].employer_id}?method=delete`%>><button class="btn btn-warning" style="width:30%;color:white">삭제하기</button></a></th>
             <%}%>
 
         </tr>

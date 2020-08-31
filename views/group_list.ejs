@@ -1,57 +1,57 @@
 <!--그룹 리스트-->
 <div style="width:100%;align-content: center;">
-	<style>
-		table {
-			border-collapse: collapse;
-			text-align: left;
-			line-height: 1.5;
-
-		}
-
-		table thead th {
-			padding: 10px;
-			font-weight: bold;
-			vertical-align: top;
-			color: #369;
-			border-bottom: 3px solid #036;
-		}
-
-		table tbody th {
-			width: 150px;
-			padding: 10px;
-			font-weight: bold;
-			vertical-align: top;
-			border-bottom: 1px solid #ccc;
-			background: #f3f6f7;
-		}
-
-		table td {
-			width: 350px;
-			padding: 10px;
-			vertical-align: top;
-			border-bottom: 1px solid #ccc;
-		}
-	</style>
-	<table style="margin:auto;width:100%;border-bottom:1">
-		<thead>
-			<tr>
-				<th>그룹 이름</th>
-				<th>그룹 지역</th>
-				<th>그룹 리더</th>
-				<th>신청 하기</th>
-		</thead>
-		<tbody>
-			</tr>
-			<%for(var i=0 ; i<data.length;i++){%>
-			<tr>
-				<form action=<%=`http://localhost:3000/employer/group/application/${data[i].group_num}`%> method="post">
-					<th><%=data[i].group_name%></th>
-					<th><%=data[i].group_area%></th>
-					<th><%=data[i].employer_name%></th>
-					<th><button type="submit">신청하기</button></th>
-				</form>
-			</tr>
-			<%}%>
-						</tbody>
-	</table>
-</div>
+    <style>
+       table {
+          border-collapse: collapse;
+          text-align: left;
+          line-height: 1.5;
+ 
+       }
+ 
+       table thead th {
+          padding: 10px;
+          font-weight: bold;
+          vertical-align: top;
+          color: #369;
+          border-bottom: 3px solid #036;
+       }
+ 
+       table tbody th {
+          width: 150px;
+          padding: 10px;
+          font-weight: bold;
+          vertical-align: top;
+          border-bottom: 1px solid #ccc;
+          background: #f3f6f7;
+       }
+ 
+       table td {
+          width: 350px;
+          padding: 10px;
+          vertical-align: top;
+          border-bottom: 1px solid #ccc;
+       }
+    </style>
+    <table style="margin:auto;width:100%;border-bottom:1">
+       <thead>
+          <tr>
+             <th>그룹 이름</th>
+             <th>그룹 지역</th>
+             <th>그룹 리더</th>
+             <th>신청 하기</th>
+       </thead>
+       <tbody>
+          </tr>
+          <%for(var i=0 ; i<data.length;i++){%>
+          <tr>
+             <form action=<%=`http://localhost:3000/employer/group/application/${data[i].group_num}`%> method="post">
+                <th><%=data[i].group_name%></th>
+                <th><%=data[i].group_area%></th>
+                <th><%=data[i].employer_name%></th>
+                <th><button type="submit">신청하기</button></th>
+             </form>
+          </tr>
+          <%}%>
+                   </tbody>
+    </table>
+ </div>

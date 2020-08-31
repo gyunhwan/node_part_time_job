@@ -1,1 +1,17 @@
 <!--채용자목록화면-->
+<div class="container" >
+        <table class="table table-bordered" style="width:60%" align="center">
+                <tbody>
+                <%for(var i=0 ; i<data.length;i++){%>
+                        <tr style="text-align: center;">
+                            <th style="width:20%">채용자이름</th>
+                            <td><%=data[i].employer_id%></td>
+                            
+                            <%if(data[i].state==2&&data[i].evaluation_employee!=1){%>
+                                <td style="width:30%"><a href='../employee/evaluation?employer_id=<%=data[i].employer_id%>'><button style="color:white" class="btn btn-warning"> 채용자평가하기</button></a></td>
+                                <%}%>
+                        </tr>
+                            <%}%>
+                </tbody>
+        </table>
+</div>
